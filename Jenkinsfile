@@ -11,11 +11,15 @@
 //}
 
 pipeline {
-    agent { docker { image 'python:3.12.1-alpine3.19' } }
+    agent any 
     stages {
         stage('build') {
             steps {
-                sh 'python --version'
+		script{
+			img='golang:1.23.1-alpine3.20'
+			docker.image("$(img)").run('-d -p 80:80')
+		}
+                //sh 'python --version'
             }
         }
     }
