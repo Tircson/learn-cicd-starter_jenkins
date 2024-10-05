@@ -17,7 +17,7 @@ pipeline {
             steps {
 		script{
 			img='golang:1.23.1-alpine3.20'
-			docker.image("$(img)").run('-d -p 80:80')
+			docker.image(${img}").run('-d -p 80:80')
 		}
                 //sh 'python --version'
             }
